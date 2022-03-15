@@ -17,12 +17,12 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgroundView(game: $game)
-            VStack {
+            VStack(spacing: 100) {
                 InstructionsView(game: $game)
-                SliderView(sliderValue: $sliderValue)
                 HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
             }
-            .padding()
+            
+            SliderView(sliderValue: $sliderValue)
         }
     }
 }
@@ -61,8 +61,9 @@ struct HitMeButton: View {
     @Binding var game: Game
     
     var body: some View {
+        let roundedValue = Int(sliderValue.rounded())
+        
         Button(action: {
-            print("Hello SwiftUI")
             alertIsVisible = true
         }) {
             Text("Hit me".uppercased())
@@ -82,11 +83,11 @@ struct HitMeButton: View {
         )
         .alert("Hello there!", isPresented: $alertIsVisible) {
             Button("Awesome!") {
+                game.startNewRound(points: game.points(for: roundedValue))
             }
         } message: {
-            let roundedValue = Int(sliderValue.rounded())
-            
             Text("""
+                 The target value is \(game.target)
                  The slider's value is \(roundedValue)
                  You scored \(game.points(for: roundedValue))
                  """)

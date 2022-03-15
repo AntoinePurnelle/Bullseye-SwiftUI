@@ -9,27 +9,30 @@ import SwiftUI
 
 struct BackgroundView: View {
     @Binding var game: Game
-
+    
     var body: some View {
         VStack {
             TopView(game: $game)
             Spacer()
             BottomView(game: $game)
         }
-            .padding()
-            .background(
-            Color.background
-                .edgesIgnoringSafeArea(.all)
+        .padding()
+        .background(
+            RingsView()
         )
     }
 }
 
 struct TopView: View {
     @Binding var game: Game
-
+    
     var body: some View {
         HStack {
-            RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+            Button (action: {
+                game.restart()
+            }) {
+                RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+            }
             Spacer()
             RoundedImageViewFilled(systemName: "list.dash")
         }
@@ -38,7 +41,7 @@ struct TopView: View {
 
 struct BottomView: View {
     @Binding var game: Game
-
+    
     var body: some View {
         HStack {
             ScoreView(label: "Score", score: game.score)
@@ -58,6 +61,33 @@ struct ScoreView: View {
             RoundRectTextView(score: score)
         }
     }
+}
+
+struct RingsView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        ZStack {
+            Color.background
+                .edgesIgnoringSafeArea(.all)
+            
+            let opacity = colorScheme == .dark ? 0.1 : 0.3
+            
+            ForEach(1..<6) { ring in
+                let size = CGFloat(ring * 100)
+                
+                Circle()
+                    .stroke(lineWidth: 20.0)
+                    .fill(
+                        RadialGradient(colors: [.backgroundCircles.opacity(opacity), .backgroundCircles.opacity(0)], center: .center, startRadius: 100, endRadius: 300)
+                    )
+                    .frame(width: size, height: size)
+            }
+            
+        }
+    }
+    
 }
 
 struct BackgroundView_Previews: PreviewProvider {
