@@ -16,7 +16,7 @@ struct InstructionText: View {
             .multilineTextAlignment(.center)
             .lineSpacing(4.0)
             .font(.footnote)
-            .foregroundColor(Color("TextColor"))
+            .foregroundColor(.text)
     }
 }
 
@@ -28,8 +28,22 @@ struct BigNumberText: View {
             .kerning(-1.0)
             .font(.largeTitle)
             .fontWeight(.black)
-            .foregroundColor(Color("TextColor"))
+            .foregroundColor(.text)
     }
+}
+
+struct LabelText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text.uppercased())
+            .fontWeight(.bold)
+            .bold()
+            .font(.caption)
+            .kerning(1.5)
+            .foregroundColor(.text)
+    }
+    
 }
 
 struct SliderLabelText: View {
@@ -38,17 +52,28 @@ struct SliderLabelText: View {
     var body: some View {
         Text(String(number))
             .bold()
-            .foregroundColor(Color("TextColor"))
+            .foregroundColor(.text)
+            .frame(width: 35)
+        
     }
     
 }
 
-struct TextViews_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
+struct TextsPreviewView: View {
+    var body: some View {
+        VStack(spacing: 8) {
             InstructionText(text: "Instructions")
             BigNumberText(number: 42)
             SliderLabelText(number: 100)
+            LabelText(text: "Label")
         }
+    }
+}
+
+struct TextViews_Previews: PreviewProvider {
+    static var previews: some View {
+        TextsPreviewView()
+        TextsPreviewView()
+            .preferredColorScheme(.dark)
     }
 }
