@@ -43,7 +43,40 @@ struct LabelText: View {
             .kerning(1.5)
             .foregroundColor(.text)
     }
+}
+
+struct BodyText: View {
+    var text: String
     
+    var body: some View {
+        let lineHeight = 34.3-15
+        
+        Text(text)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
+            .lineSpacing(lineHeight)
+            .foregroundColor(Color.text)
+            .padding(.vertical, lineHeight / 2)
+            
+    }
+}
+
+struct ButtonText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(
+                Color.accentColor
+            )
+            .cornerRadius(12)
+        
+    }
 }
 
 struct SliderLabelText: View {
@@ -61,12 +94,18 @@ struct SliderLabelText: View {
 
 struct TextsPreviewView: View {
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 16) {
             InstructionText(text: "Instructions")
             BigNumberText(number: 42)
             SliderLabelText(number: 100)
             LabelText(text: "Label")
+            BodyText(text: """
+                     Body text 555
+                     Second line
+                    """)
+            ButtonText(text: "Button text")
         }
+        .padding()
     }
 }
 
