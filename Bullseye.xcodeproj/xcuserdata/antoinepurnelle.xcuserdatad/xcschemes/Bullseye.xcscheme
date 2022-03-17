@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "73B4170624D7854C20B7EF94"
-               BuildableName = "Bullseye.app"
+               BuildableName = "Bull&apos;s Eye.app"
                BlueprintName = "Bullseye"
                ReferencedContainer = "container:Bullseye.xcodeproj">
             </BuildableReference>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AEE7AED127DB7E4B009B3316"
+               BuildableName = "BullseyeTests.xctest"
+               BlueprintName = "BullseyeTests"
+               ReferencedContainer = "container:Bullseye.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -45,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73B4170624D7854C20B7EF94"
-            BuildableName = "Bullseye.app"
+            BuildableName = "Bull&apos;s Eye.app"
             BlueprintName = "Bullseye"
             ReferencedContainer = "container:Bullseye.xcodeproj">
          </BuildableReference>
@@ -57,6 +67,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "73B4170624D7854C20B7EF94"
+            BuildableName = "Bull&apos;s Eye.app"
+            BlueprintName = "Bullseye"
+            ReferencedContainer = "container:Bullseye.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
