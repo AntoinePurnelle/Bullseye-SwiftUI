@@ -16,4 +16,5 @@ extension Color {
     static var buttonStroke: Color { return Color("ButtonStrokeColor") }
     static var text: Color { return Color("TextColor") }
     static var backgroundCircles: Color { return Color("BackgroundCirclesColor") }
+    static var leaderBoardRow: Color { return Color("LeaderBoardRowColor") }
 }

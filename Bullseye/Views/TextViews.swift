@@ -58,7 +58,6 @@ struct BodyText: View {
             .lineSpacing(lineHeight)
             .foregroundColor(Color.text)
             .padding(.vertical, lineHeight / 2)
-            
     }
 }
 
@@ -75,7 +74,6 @@ struct ButtonText: View {
                 Color.accentColor
             )
             .cornerRadius(12)
-        
     }
 }
 
@@ -89,7 +87,44 @@ struct SliderLabelText: View {
             .frame(width: 35)
         
     }
+}
+
+struct ScoreText: View {
+    var score: Int
     
+    var body: some View {
+        Text(String(score))
+            .foregroundColor(.text)
+            .kerning(-0.2)
+            .bold()
+            .fontWeight(.bold)
+            .font(.title3)
+    }
+}
+
+struct DateText: View {
+    var date: Date
+    
+    var body: some View {
+        Text(date, style: .time)
+            .foregroundColor(.text)
+            .kerning(-0.2)
+            .bold()
+            .fontWeight(.bold)
+            .font(.title3)
+    }
+}
+
+struct BigBoldText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text.uppercased())
+            .kerning(2.0)
+            .foregroundColor(.text)
+            .font(.title)
+            .fontWeight(.black)
+    }
 }
 
 struct TextsPreviewView: View {
@@ -104,6 +139,9 @@ struct TextsPreviewView: View {
                      Second line
                     """)
             ButtonText(text: "Button text")
+            ScoreText(score: 42)
+            DateText(date: Date())
+            BigBoldText(text: "Big Bold Text")
         }
         .padding()
     }
